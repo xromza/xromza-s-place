@@ -1,0 +1,95 @@
+a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+::selection {
+    background-color: black;
+    color: white;
+}
+
+a:hover {
+    transform: scale(1.1);
+}
+
+#erase {
+    min-height: 1.2em;
+    line-height: 1.2;
+}
+
+.bg {
+    background: url("eyes.gif") center;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+.label {
+    font-size: 1.5rem;
+}
+
+#contact-form {
+    height: 100%;
+    width: 100vw;
+    margin: 0;
+    border-radius: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; 
+    transition: opacity 0.2s ease-in-out, visibility 0.2s;
+}
+#contact-form.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+.form-check-input:checked {
+    background-color: gray !important;
+    border-color: gray !important; 
+}
+.form-check-input:focus {
+    box-shadow: 0 0 0 .25rem rgba(100, 100, 100, .25) !important;
+}
+#background {
+    filter: blur(0px);
+    transition: filter 0.2s ease;
+}
+#background.blurred {
+    filter: blur(10px);
+    pointer-events: none;
+}
+
+#name-field {
+    display: block;
+}
+
+#name-field-sm {
+    display: none;
+}
+
+@media screen and (min-width: 48em) {
+    #contact-form {
+        width: 75vw;
+        height: 99%;
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem;
+        border-radius: 3rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease-in-out, visibility 0.2s;
+    }
+
+    #name-field-sm {
+        display: flex;
+    }
+
+    #name-field {
+        display: none;
+    }
+}
