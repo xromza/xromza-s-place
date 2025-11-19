@@ -24,7 +24,15 @@ function clearFields() {
 
 
 function getFullName() {
-    return localStorage.getItem("surname") + " " + localStorage.getItem("name") + " " + localStorage.getItem("midname");
+    const surname = (localStorage.getItem("surname") ? localStorage.getItem("surname") : "");
+    const name = (localStorage.getItem("name") ? localStorage.getItem("name") : "");
+    const midname = (localStorage.getItem("midname") ? localStorage.getItem("midname") : "");
+    let str = surname;
+    if (name !== "" && str !== "") str += " " + name;
+    else if (name !== "") str += name;
+    if (midname !== "" && str !== "") str += " " + midname;
+    else if (midname !== "") str += midname;
+    return str;
 }
 function setFullName() {
     let str = surnameinput.value + " " + nameInput.value + " " + midnameinput.value;
@@ -110,9 +118,9 @@ window.addEventListener("DOMContentLoaded", function () {
     midnameinput = this.document.getElementById("midname");
 
     fullNameInput.value = getFullName();
-    surnameinput.value = this.localStorage.getItem("surname");
-    nameInput.value = this.localStorage.getItem("name");
-    midnameinput.value = this.localStorage.getItem("midname");
+    if (this.localStorage.getItem("surname") !== null) surnameinput.value = this.localStorage.getItem("surname");
+    if (this.localStorage.getItem("name") !== null) nameInput.value = this.localStorage.getItem("name");
+    if (this.localStorage.getItem("midname") !== null) midnameinput.value = this.localStorage.getItem("midname");
 
     telinput.value = this.localStorage.getItem("tel");
     msginput.value = this.localStorage.getItem("msg");
@@ -131,9 +139,7 @@ window.addEventListener("DOMContentLoaded", function () {
     emailinput.addEventListener("change", () => {
         this.localStorage.setItem("email", emailinput.value);
     })
-    fullNameInput.addEventListener("change", () => {
-        setNameBlocks();
-    })
+    fullNameInput.addEventListener("change", setNameBlocks)
     nameInput.addEventListener("change", () => {
         this.localStorage.setItem("name", nameInput.value);
         setFullName();
