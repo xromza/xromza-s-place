@@ -73,6 +73,17 @@ body {
     display: none;
 }
 
+@font-face {
+    font-family: 'NewCyrillicGoth';
+    src: url('newcyrillicgoth.ttf') format('ttf');
+    unicode-range: U+0400-04FF, U+0500-052F;
+}
+
+@font-face {
+    font-family: 'Jacquard24';
+    src: url('Jacquard24.ttf') format('ttf');
+    unicode-range: U+0000-007F, U+0080-00FF;
+}
 @media screen and (min-width: 48em) {
     #contact-form {
         width: 75vw;
